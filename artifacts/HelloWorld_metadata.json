@@ -60,11 +60,11 @@
 	},
 	"sources": {
 		"HelloWorld.sol": {
-			"keccak256": "0xbcd251712c3e56a53f6da458a37abd02c9465cb82d548b020950e10c714e2fef",
+			"keccak256": "0x62fb76c37d4d7f5b5027b41d6e74c67a98d7e4eabce48a1f964366edc7cbda44",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ba45683c3c0193b0262ebdb6edc81d3fe95219b8f975af73774bab931fe56b53",
-				"dweb:/ipfs/QmZQrtgsshDewkBDGcD1jFuZP1gFMuKdsHEnZwD9yGqkrE"
+				"bzz-raw://dc26bc53b095827094e5f8e3e21e4716d50e5fa693e7bbc41fadefa05f45cb1a",
+				"dweb:/ipfs/QmdBVuCRbxqUPni96eP9kDCmHuyD2j9SMwjTSbuSdAidXY"
 			]
 		}
 	},

@@ -24,7 +24,7 @@ contract Ballot {
 
     address public chairperson;
     // deployate takesin ballot creation time
-    uint deploydate;
+    uint startTime;
 
     mapping(address => Voter) public voters;
 
@@ -37,7 +37,7 @@ contract Ballot {
     constructor(bytes32[] memory proposalNames) {
 
         chairperson = msg.sender;
-        deploydate = block.timestamp;
+        startTime = block.timestamp;
 
         voters[chairperson].weight = 1;
 
@@ -57,9 +57,9 @@ contract Ballot {
     // this is a modifier timeNot Crossed
     //this takes in deploydate(time of ballot deployment) and corrent block time and does not let
     // total election time to run more than 5 minutes
-    modifier timeNOtCrossed {
+    modifier voteEnded {
         require(
-            block.timestamp - deploydate < 5 minutes,
+            block.timestamp - startTime < 5 minutes,
             "Voting time has crossed."
         );
         _;
@@ -113,7 +113,7 @@ contract Ballot {
      * @dev Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.
      * @param proposal index of proposal in the proposals array
      */
-    function vote(uint proposal) public timeNOtCrossed {
+    function vote(uint proposal) public voteEnded {
         
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "Has no right to vote");
@@ -145,15 +145,15 @@ contract Ballot {
 
     function totolTimePassed() public view returns (uint){
         uint currentTime  = block.timestamp;
-        return currentTime - deploydate;
+        return currentTime - startTime;
     }
 
     function startingTime() public view returns (uint){
-        return deploydate;
+        return startTime;
     }
 
     function finalTime() public view returns (uint){
-        return deploydate + 5 minutes;
+        return startTime + 5 minutes;
     }
 
     /** 
